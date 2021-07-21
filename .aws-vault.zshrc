@@ -15,3 +15,9 @@ function awsv {
 alias terraform="awsv terraform"
 alias packer="awsv packer"
 alias aws="awsv aws"
+
+prompt_awsvault_indicator() {
+  if [[ -n $AWS_VAULT ]]; then
+    p10k segment -f 208 -i 'ﳕ' -t ''
+  fi
+}
