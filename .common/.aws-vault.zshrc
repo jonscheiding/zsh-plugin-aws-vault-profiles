@@ -21,10 +21,6 @@ function awsv {
   aws-vault exec $AWS_PROFILE_EVALUATED -- "$@"
 }
 
-# alias terraform="awsv terraform"
-# alias packer="awsv packer"
-# alias aws="awsv aws"
-
 prompt_awsvault() {
   ICON=''
 
