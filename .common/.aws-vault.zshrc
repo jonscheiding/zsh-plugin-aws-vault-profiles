@@ -44,9 +44,7 @@ function awsc {
     aws-vault exec $AWS_PROFILE_EVALUATED -- bash -c $COMMAND
   fi
 
-  if [ ! -z "$1" ]; then
-    awsv "$@"
-  fi
+  AWS_PROFILE=$AWS_PROFILE_EVALUATED "$@"
 }
 
 prompt_awsvault() {
