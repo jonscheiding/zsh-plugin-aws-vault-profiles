@@ -39,7 +39,7 @@ This plugin does not depend on any Oh My ZSH functionality, so you can also use 
 
 This plugin provides the following features:
 
-### Alias `awsv`
+### Command `awsv`
 
 Executes a command with `aws-vault`, using the profile set in the `$AWS_PROFILE` environment variable (or
 default, if none is set).
@@ -70,7 +70,7 @@ The main difference is that if you are already in an `aws-vault` shell (detected
 `$AWS_VAULT` environment variable), it will not nest you into another one; it will just execute the command
 directly.
 
-### Alias `awsc`
+### Command `awsc`
 
 Generate temporary credentials using the profile set in the `$AWS_PROFILE` environment variable (or default,
 if none is set), and stores them under that profile in your `$AWS_SHARED_CREDENTIALS_FILE` (by default,
