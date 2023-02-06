@@ -1,8 +1,6 @@
 # zsh-awsvault
 
-oh-my-zsh plugin for [aws-vault](https://github.com/99designs/aws-vault).
-
-Provides a couple of aliases that integrate aws-vault seamlessly with the `AWS_PROFILE` environment variable.
+oh-my-zsh plugin for [aws-vault](https://github.com/99designs/aws-vault) providing a couple of functions that integrate aws-vault seamlessly with the `AWS_PROFILE` environment variable.
 
 This is most useful when used alongside a profile-switching tool, such as
 [awsp](https://github.com/johnnyopao/awsp).
@@ -15,11 +13,11 @@ This plugin is intended to be used with [oh-my-zsh](https://ohmyz.sh/). To insta
 
 1. Clone the repo to the Oh My ZSH plugins directory:
    ```shell
-   $ git clone https://github.com/jonscheiding/zsh-plugin-awsvault $ZSH_CUSTOM/plugins/awsvault
+   $ git clone https://github.com/jonscheiding/zsh-plugin-aws-vault-profiles $ZSH_CUSTOM/plugins/aws-vault-profiles
    ```
-2. In your `.zshrc`, add `awsvault` to your plugins list:
+2. In your `.zshrc`, add `aws-vault-profiles` to your plugins list:
    ```
-   plugins=(git ruby ... awsvault)
+   plugins=(git ruby ... aws-vault-profiles)
    ```
 
 ### Vanilla ZSH
@@ -28,11 +26,11 @@ This plugin does not depend on any Oh My ZSH functionality, so you can also use 
 
 1. Clone the repo somewhere:
    ```shell
-   $ git clone https://github.com/jonscheiding/zsh-plugin-awsvault ~/.zsh-plugin-awsvault
+   $ git clone https://github.com/jonscheiding/zsh-plugin-aws-vault-profiles ~/.zsh-plugin-aws-vault-profiles
    ```
 2. In your `.zshrc`, source the plugin file:
    ```
-   source ~/.zsh-plugin-awsvault/awsvault.plugin.zsh
+   source ~/.zsh-plugin-aws-vault-profiles/awsvault.plugin.zsh
    ```
 
 ## Features
