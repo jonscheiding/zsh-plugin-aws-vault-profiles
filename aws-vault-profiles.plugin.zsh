@@ -21,35 +21,39 @@ function awsv {
 }
 
 function awsc {
+  if [[ -z "$@" ]]; then
+    echo "Usage: $0 <command>" >&2
+    return 2;
+  fi
+
   type crudini > /dev/null || {
     echo "$(tput setaf 3)This command requires the crudini tool. Please install it with pip install crudini.$(tput sgr0)" >&2
     return 1
   }
 
-  if [[ "$@" == "--clear" ]]; then
-    echo -e "$(tput setaf 6)Removing temporary credentials for the $(_profile) profile.$(tput sgr0)" >&2
-
-    $(_crudini --del aws_access_key_id) && \
-    $(_crudini --del aws_secret_access_key) && \
-    $(_crudini --del aws_session_token)
-
-    return
-  fi
-
   echo -e "$(tput setaf 6)Storing temporary credentials for the $(_profile) profile.$(tput sgr0)" >&2
 
-  COMMAND="
+  SET_CREDENTIALS="
     $(_crudini --set aws_access_key_id \$AWS_ACCESS_KEY_ID) && 
     $(_crudini --set aws_secret_access_key \$AWS_SECRET_ACCESS_KEY) &&
     $(_crudini --set aws_session_token \$AWS_SESSION_TOKEN)"
 
   if [ ! -z "$AWS_VAULT" ]; then
-    bash -c $COMMAND
+    bash -c $SET_CREDENTIALS
   else
-    aws-vault exec $(_profile) -- bash -c $COMMAND
+    aws-vault exec $(_profile) -- bash -c $SET_CREDENTIALS
   fi
 
   AWS_PROFILE=$(_profile) "$@"
+  EXIT_STATUS=$?
+
+  echo -e "$(tput setaf 6)Removing temporary credentials for the $(_profile) profile.$(tput sgr0)" >&2
+
+  $(_crudini --del aws_access_key_id) && \
+  $(_crudini --del aws_secret_access_key) && \
+  $(_crudini --del aws_session_token)
+
+  return $EXIT_STATUS
 }
 
 function _crudini {
