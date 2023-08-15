@@ -41,7 +41,7 @@ function awsc {
   if [ ! -z "$AWS_VAULT" ]; then
     bash -c $SET_CREDENTIALS
   else
-    aws-vault exec $(_profile) -- bash -c $SET_CREDENTIALS
+    aws-vault exec $(_profile) -- bash -c $SET_CREDENTIALS || return 1
   fi
 
   AWS_PROFILE=$(_profile) "$@"
